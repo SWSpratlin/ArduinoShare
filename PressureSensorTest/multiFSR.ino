@@ -38,6 +38,9 @@ void checkSensorContinuous(int sensorPin, int lightPin)
      }
 }
 
+// This function only writes the light pin when something has changed, this means no writing of the light pin
+// when someone is continuously standing on a sensor, or no one is standing on a sensor. I think this might be
+// better for the hardware overall, but it may introduce bugs to the program.
 void checkSensorOnChange(int sensorPin, int lightPin)
 {
     static bool lastSensorState = false;
