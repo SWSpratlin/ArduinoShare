@@ -33,14 +33,11 @@ void setup(void) {
 
 void bootFlash()
 {
-	    
     for(int i = 0; i < pins.size(); i++)
     {
     	digitalWrite(pins[i], HIGH);
     }
-    
     delay(250);
-    
     for(int i = 0; i < pins.size(); i++){
     	digitalWrite(pins[i], LOW);
     }
