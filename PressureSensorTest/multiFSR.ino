@@ -14,6 +14,8 @@ const int sensor1 = A0;
 const int sensor1 = A0;
 const int sensor1 = A0;
 
+const int pins[4] = {light1, light2, light3, light4};
+
 //Setting up the pinModes for the output.
 void setup(void) {
     Serial.begin(9600);
@@ -21,9 +23,28 @@ void setup(void) {
     pinMode(light2, OUTPUT);
     pinMode(light3, OUTPUT);
     pinMode(light4, OUTPUT);
+	
+	for(int i = 0; i < 3; i++)
+	{
+		bootflash();
+	}
+    
 }
 
-
+void bootFlash()
+{
+	    
+    for(int i = 0; i < pins.size(); i++)
+    {
+    	digitalWrite(pins[i], HIGH);
+    }
+    
+    delay(250);
+    
+    for(int i = 0; i < pins.size(); i++){
+    	digitalWrite(pins[i], LOW);
+    }
+}
 // This is a function that reads the pressure sensor, and in turn pulls the Pin for the light HIGH.
 // This runs continuously, so it will Set the light pin to HIGH every loop of the arduino.
 // I have no idea if that will affect the hardware. Might be fine, might not, dunno.
