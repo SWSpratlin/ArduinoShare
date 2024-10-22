@@ -10,11 +10,12 @@ const int light4 = 0;
 // These are the analog pins that are connected to the sensors. Change them to whatever pins your sensors are connected to
 // For clarity, Sensor 1 will correspond to Light 1 (unless you change it).
 const int sensor1 = A0;
-const int sensor1 = A0;
-const int sensor1 = A0;
-const int sensor1 = A0;
+const int sensor2 = A0;
+const int sensor3 = A0;
+const int sensor4 = A0;
 
 const int pins[4] = {light1, light2, light3, light4};
+const int size = sizeOf(pins) / sizeOf(pins[0]);
 
 //Setting up the pinModes for the output.
 void setup(void) {
@@ -33,14 +34,15 @@ void setup(void) {
 
 void bootFlash()
 {
-    for(int i = 0; i < pins.size(); i++)
+    for(int i = 0; i < size; i++)
     {
     	digitalWrite(pins[i], HIGH);
     }
     delay(250);
-    for(int i = 0; i < pins.size(); i++){
+    for(int i = 0; i < size); i++){
     	digitalWrite(pins[i], LOW);
     }
+    delay(250);
 }
 // This is a function that reads the pressure sensor, and in turn pulls the Pin for the light HIGH.
 // This runs continuously, so it will Set the light pin to HIGH every loop of the arduino.
@@ -52,7 +54,7 @@ void checkSensorContinuous(int sensorPin, int lightPin)
      {
          digitalWrite(lightPin, HIGH);
      } else {
-         digitalWrite(lightPint, LOW);
+         digitalWrite(lightPin, LOW);
      }
 }
 
